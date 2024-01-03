@@ -1,33 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class CSVFileReader : MonoBehaviour
 {
     [SerializeField] TextAsset csvFile; // CSVファイル
-    private List<string[]> csvData = new List<string[]>(); // CSVファイルの中身を入れるリスト
-    const int FirstReaderNum = 1;
-    int TextCount = 0;
+    private List<string[]> csvData = new List<string[]>();
+    int i = 0;
+    public TMP_Text NameText;
+    public TMP_Text LogText;
 
     void Start()
     {
-        StringReader reader = new StringReader(csvFile.text); // TextAssetをStringReaderに変換
+        StringReader reader = new StringReader(csvFile.text);
 
         while (reader.Peek() != -1)
         {
-            string line = reader.ReadLine(); // 1行ずつ読み込む
-            csvData.Add(line.Split(',')); // csvDataリストに追加する
+            string line = reader.ReadLine();
+            csvData.Add(line.Split(','));
         }
     }
 
-    private void Update()
+    void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            TextCount++;
+            NameText.text = csvData[i][0];
+            LogText.text = csvData[i][1];
 
-            // データの表示
-            Debug.Log("日本語：" + csvData[TextCount][0] + ", English：" + csvData[TextCount][1]);
+            if (i < csvData.Count - 1) i++; 
         }
     }
 }
