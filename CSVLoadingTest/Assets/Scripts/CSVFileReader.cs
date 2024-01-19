@@ -7,7 +7,7 @@ public class CSVFileReader : MonoBehaviour
 {
     [SerializeField] TextAsset csvFile; // CSVƒtƒ@ƒCƒ‹
     private List<string[]> csvData = new List<string[]>();
-    int i = 0;
+    int TextNum = 0;
     public TMP_Text NameText;
     public TMP_Text LogText;
 
@@ -26,10 +26,10 @@ public class CSVFileReader : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            NameText.text = csvData[i][0];
-            LogText.text = csvData[i][1];
+            NameText.text = csvData[TextNum][0];
+            LogText.text = csvData[TextNum][1];
 
-            if (i < csvData.Count - 1) i++; 
+            if (TextNum < csvData.Count - 1) TextNum++; 
         }
     }
 }
