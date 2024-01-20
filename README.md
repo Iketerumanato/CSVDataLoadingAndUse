@@ -14,6 +14,7 @@
 
 
 4CSVデータを設計図として正方形のステージの生成を行った(CreateStageDataというシーン)
+一層一層毎に生成用のプレハブオブジェクトを生成しているので一つのプレハブで割り当てているスクリプトに各層のCsvデータを読み込ませていきたい
 
 ![CSVLoadingTest - CreateStageData - Windows, Mac, Linux - Unity 2021 3 23f1 Personal_ _DX11_ 2024_01_20 13_55_40](https://github.com/Iketerumanato/CSVDataLoadingAndUse/assets/74332407/ba0ecd78-7e50-4170-b7c1-ed25678e9921)
 
