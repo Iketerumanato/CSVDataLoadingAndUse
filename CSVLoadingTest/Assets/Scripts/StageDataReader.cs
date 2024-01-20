@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using UnityEngine;
 
 public class StageDataReader : MonoBehaviour
@@ -43,15 +43,16 @@ public class StageDataReader : MonoBehaviour
                 int cellValue = int.Parse(cells[vertical]);
 
                 Vector3 position = new(vertical, StageLayerHeight, beside);
+                var parent = this.transform;
 
                 // セルの値に応じてオブジェクト生成
                 if (cellValue == (int)StageCellNum.field)
                 {
-                    Instantiate(StageBlocks[(int)StageBlockNum.Field], position, Quaternion.identity);
+                    Instantiate(StageBlocks[(int)StageBlockNum.Field], position, Quaternion.identity, parent);
                 }
                 if (cellValue == (int)StageCellNum.gimick)
                 {
-                    Instantiate(StageBlocks[(int)StageBlockNum.Gimick], position, Quaternion.identity);
+                    Instantiate(StageBlocks[(int)StageBlockNum.Gimick], position, Quaternion.identity, parent);
                 }
 
             }
