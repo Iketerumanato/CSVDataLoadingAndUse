@@ -6,14 +6,14 @@ using TMPro;
 public class CSVFileReader : MonoBehaviour
 {
     [SerializeField] TextAsset csvFile; // CSVƒtƒ@ƒCƒ‹
-    private List<string[]> csvData = new List<string[]>();
+    readonly private List<string[]> csvData = new();
     int TextNum = 0;
     public TMP_Text NameText;
     public TMP_Text LogText;
 
     void Start()
     {
-        StringReader reader = new StringReader(csvFile.text);
+        StringReader reader = new(csvFile.text);
 
         while (reader.Peek() != -1)
         {

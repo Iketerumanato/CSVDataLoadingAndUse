@@ -1,19 +1,33 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StageDataReader : MonoBehaviour
 {
     [SerializeField] TextAsset StageDataFile;
-    [SerializeField] GameObject FieldBlock;
-    [SerializeField] GameObject GimickBlock;
+    [SerializeField] GameObject[] StageBlocks;
     [SerializeField] int FieldHeight;
 
-    //readonly List<int> FieldCnt = new List<int> { 0, 1, 2, 3, 4 };
+    enum StageCellNum
+    {
+        none,//0
+        field,//1
+        gimick//2
+    }
+
+    enum StageBlockNum
+    {
+        Field,//0
+        Gimick//1
+    }
 
     private void Start()
     {
         CreateField(StageDataFile.text, FieldHeight);
+
+        //for (int i = 0; i < StageLayerNum; i++)
+        //{
+        //    CreateField(StageDataFile[i].text, FieldHeight[i]);
+        //}
     }
 
     void CreateField(string csvText, int StageLayerHeight)
@@ -28,16 +42,16 @@ public class StageDataReader : MonoBehaviour
             {
                 int cellValue = int.Parse(cells[vertical]);
 
-                Vector3 position = new Vector3(vertical, StageLayerHeight, beside);
+                Vector3 position = new(vertical, StageLayerHeight, beside);
 
                 // セルの値に応じてオブジェクト生成
-                if (cellValue == 1)
+                if (cellValue == (int)StageCellNum.field)
                 {
-                    Instantiate(FieldBlock, position, Quaternion.identity);
+                    Instantiate(StageBlocks[(int)StageBlockNum.Field], position, Quaternion.identity);
                 }
-                if (cellValue == 2)
+                if (cellValue == (int)StageCellNum.gimick)
                 {
-                    Instantiate(GimickBlock, position, Quaternion.identity);
+                    Instantiate(StageBlocks[(int)StageBlockNum.Gimick], position, Quaternion.identity);
                 }
 
             }
