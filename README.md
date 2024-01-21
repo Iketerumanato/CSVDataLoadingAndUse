@@ -11,3 +11,12 @@
 ※変な枠があるので修正予定
 
 ![CSVLoadingTest - SampleScene - Windows, Mac, Linux - Unity 2021 3 23f1 Personal_ _DX11_ 2024_01_04 1_10_29](https://github.com/Iketerumanato/CSVDataLoadingAndUse/assets/74332407/519c659c-4305-49c9-b648-9cdd1fff2f25)
+
+
+4,CSVデータを設計図として正方形のステージの生成を行った(CreateStageDataというシーン)
+
+一層一層毎に生成用のプレハブオブジェクトを生成しているので一つのプレハブで割り当てているスクリプトに各層のCsvデータを読み込ませていきたい
+
+![CSVLoadingTest - CreateStageData - Windows, Mac, Linux - Unity 2021 3 23f1 Personal_ _DX11_ 2024_01_20 13_55_40](https://github.com/Iketerumanato/CSVDataLoadingAndUse/assets/74332407/ba0ecd78-7e50-4170-b7c1-ed25678e9921)
+
+※データのフォーマットに問題があるのかどうかわからないがFormatException: Input string was not in a correct format.と出ている
